@@ -1,0 +1,14 @@
+language: go
+go:
+  - 1.11.x
+  - 1.12.x
+env:
+  - GO111MODULE=on
+before_script:
+  - make devel-deps
+script:
+  - make lint
+notifications:
+  email: false
+  slack:
+    secure: TODO
