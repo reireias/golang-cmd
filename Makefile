@@ -9,11 +9,12 @@ export GO111MODULE=on
 deps:
 	@go get -v -d
 
-.PHONY: deps
+.PHONY: devel-deps
 devel-deps: deps
-	@GO111MODULE=off go get \
+	@GO111MODULE=off go get -u \
 		golang.org/x/lint/golint \
-		github.com/motemen/gobump/cmd/gobump
+		github.com/motemen/gobump/cmd/gobump \
+		github.com/goreleaser/goreleaser
 
 bin/%: cmd/%/main.go deps
 	@go build -ldflags $(LDFLAGS) -o $@ $<
